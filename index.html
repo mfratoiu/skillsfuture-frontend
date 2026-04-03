@@ -595,4 +595,13 @@
                             <div class="stat-card"><div class="stat-label">💰 Credits</div><div class="stat-number">$${stats.credits}</div></div>
                         `;
                     }
-                } catch (err) 
+                } catch (err)  {
+                        console.error('Dashboard error:', err);
+                    }
+                }
+        };
+
+        document.addEventListener('DOMContentLoaded', () => window.app.init());
+    </script>
+</body>
+</html>
