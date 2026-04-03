@@ -214,8 +214,8 @@
                 <p class="form-link">Don't have an account? <a onclick="app.setView('signup')">Create one</a></p>
                 <div class="demo-box">
                     <p>Demo Accounts</p>
-                    <p>Student: <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="f487808190919a80b49091999bda979b99">[email&#160;protected]</a></p>
-                    <p>Trainer: <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="d8acaab9b1b6bdaa98bcbdb5b7f6bbb7b5">[email&#160;protected]</a></p>
+                    <p>Student: student@demo.com</p>
+                    <p>Trainer: trainer@demo.com</p>
                     <p style="font-size: 0.7rem; margin-top: 0.3rem;">Password: password123</p>
                 </div>
             </div>
@@ -317,10 +317,10 @@
         </div>
     </div>
 
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false">
-        const API_URL = 'https://skillsfuture-backend.onrender.com'; // Fixed: no trailing slash
+    <script>
+        const API_URL = 'https://skillsfuture-backend.onrender.com'; // Change to your Render URL after deployment  
 
-        window.app = {
+        const app = {
             currentView: 'landing',
             token: null,
             user: null,
@@ -595,13 +595,15 @@
                             <div class="stat-card"><div class="stat-label">💰 Credits</div><div class="stat-number">$${stats.credits}</div></div>
                         `;
                     }
-                } catch (err)  {
-                        console.error('Dashboard error:', err);
-                    }
+                } catch (err) {
+                    console.error('Error loading dashboard:', err);
                 }
+
+                document.getElementById('enrolled-courses').innerHTML = '<div class="loading">Loading enrolled courses...</div>';
+            }
         };
 
-        document.addEventListener('DOMContentLoaded', () => window.app.init());
+        window.addEventListener('DOMContentLoaded', () => app.init());
     </script>
 </body>
 </html>
